@@ -16,6 +16,8 @@ import LocomotiveScroll from 'locomotive-scroll';
 
 export default function Home() {
 
+
+
   const locomotiveScroll = new LocomotiveScroll();
 
   return (
@@ -25,6 +27,8 @@ export default function Home() {
    <MArqueee/>
    <About/>
    <Eyes/>
+  
+
 
    </div>
   );
