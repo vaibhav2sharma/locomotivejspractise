@@ -1,29 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic'; // Import dynamic from Next.js
+import dynamic from 'next/dynamic';
 
 const Eyes = () => {
   const [rotate, setRotate] = useState(0);
 
   useEffect(() => {
-    // Ensure useEffect runs only on the client-side
-    const handleMouseMove = (e) => {
-      let mouseX = e.clientX;
-      let mouseY = e.clientY;
+    // Check if window is defined before accessing its properties
+    if (typeof window !== 'undefined') {
+      const handleMouseMove = (e) => {
+        let mouseX = e.clientX;
+        let mouseY = e.clientY;
 
-      let deltaX = mouseX - window.innerWidth / 2;
-      let deltaY = mouseY - window.innerHeight / 2;
+        let deltaX = mouseX - window.innerWidth / 2;
+        let deltaY = mouseY - window.innerHeight / 2;
 
-      var angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
-      setRotate(angle - 180);
-    };
+        var angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+        setRotate(angle - 180);
+      };
 
-    window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mousemove', handleMouseMove);
 
-    // Cleanup function to remove event listener when component unmounts
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []); // Empty dependency array ensures the effect runs only once after the initial render
+      return () => {
+        window.removeEventListener('mousemove', handleMouseMove);
+      };
+    }
+  }, []);
 
   return (
     <div data-scroll data-scroll-speed=".3" className="w-full relative">
@@ -53,5 +54,5 @@ const Eyes = () => {
 };
 
 export default dynamic(() => Promise.resolve(Eyes), {
-  ssr: false, // Disable server-side rendering
+  ssr: false,
 });
