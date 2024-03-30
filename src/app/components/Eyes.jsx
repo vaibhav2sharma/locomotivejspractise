@@ -50,6 +50,13 @@ const Eyes = () => {
         </div>
       </div>
     </div>
+    <div className="bg-white h-[200px]  w-[200px] absolute top-[300px] left-[35%] rounded-[50%]  ">
+      <div className="bg-black h-[100px] w-[100px] rounded-[50%] absolute top-[50px] left-[50px]">
+        <div style={{ transform: `rotate(${rotate}deg)` }} className="h-[20px] w-full absolute top-[39%]">
+          <div className="h-[20px] w-[20px] rounded-[50%] bg-white"></div>
+        </div>
+      </div>
+    </div>
 
     <div className="bg-white h-[200px]  w-[200px] absolute top-[300px] right-[35%] rounded-[50%]  ">
       <div className="bg-black h-[100px] w-[100px] rounded-[50%] absolute top-[50px] left-[50px]">
@@ -59,6 +66,7 @@ const Eyes = () => {
       </div>
     </div>
   </div>
+  
   );
 };
 
