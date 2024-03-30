@@ -5,8 +5,15 @@ import './globals.css'
 import Landingpage from "./components/Landingpage";
 import MArqueee from "./components/MArqueee";
 import About from "./components/About";
-import Eyes from "./components/Eyes";
-import LocomotiveScroll from 'locomotive-scroll';
+
+
+// import Eyes from "./components/Eyes";
+import dynamic from "next/dynamic"
+import FeaturedProj from "./components/FeaturedProj";
+import Casestudies from "./components/Casestudies";
+import { useEffect } from "react";
+
+const DynamicEyes = dynamic(() => import('./components/Eyes'),{ ssr:false});
 
 
 
@@ -16,9 +23,27 @@ import LocomotiveScroll from 'locomotive-scroll';
 
 export default function Home() {
 
+    useEffect(()=>{
+        (
+
+          async () =>{
+
+            const LocomotiveScroll = (await import('locomotive-scroll')).default;
+            const locomotiveScroll = new LocomotiveScroll();
 
 
-  const locomotiveScroll = new LocomotiveScroll();
+          } 
+
+
+
+
+        )()
+
+
+    },[])
+
+
+
 
   return (
    <div id="main">
@@ -26,7 +51,10 @@ export default function Home() {
    <Landingpage/>
    <MArqueee/>
    <About/>
-   <Eyes/>
+   {/* <Eyes/> */}
+   <DynamicEyes/>
+   <FeaturedProj/>
+   <Casestudies/>
   
 
 
